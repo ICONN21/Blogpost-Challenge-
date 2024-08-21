@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        {{!-- <nav>
+            <a href="/">Home</a>
+            {{#if logged_in}}
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            {{else}}
+                <a href="/login">Login</a>
+                <a href="/signup">Signup</a>
+            {{/if}}
+        </nav> --}}
+        <nav>
+    <a href="/">Home</a>
+    {{#if logged_in}}
+        <a href="/dashboard">Dashboard</a>
+        <form id="logout-form" action="/api/users/logout" method="POST" style="display: inline;">
+            <button type="submit" style="background: none; border: none; color: #007bff; text-decoration: underline; cursor: pointer;">Logout</button>
+        </form>
+    {{else}}
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+    {{/if}}
+</nav>
+
+    </header>
+
+    <div class="container">
+        {{{body}}}
+    </div>
+    <script src="/js/auth.js"></script>   
+    <script src="/js/comment.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+</html>

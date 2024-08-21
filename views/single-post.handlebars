@@ -1,0 +1,25 @@
+<article>
+    <h2>{{post.title}}</h2>
+    <p>by {{post.user.username}} on {{post.createdAt}}</p>
+    <p>{{post.content}}</p>
+</article>
+
+<h3>Comments</h3>
+
+{{#each post.comments}}
+    <div class="comment">
+        <p><strong>{{this.user.username}}</strong> on {{this.createdAt}}</p>
+        <p>{{this.comment_text}}</p>
+    </div>
+{{else}}
+    <p>No comments yet.</p>
+{{/each}}
+
+{{#if logged_in}}
+    <form id="comment-form" data-post-id="{{post.id}}">
+        <textarea id="comment-text" placeholder="Add a comment"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+{{else}}
+    <p><a href="/login">Login</a> to add a comment.</p>
+{{/if}}
